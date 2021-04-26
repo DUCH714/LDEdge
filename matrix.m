@@ -1,0 +1,22 @@
+[i,j,k]=size(C_man);
+ei = sparse(1 : i-1 , 2 : i , 1, i , i );
+I=-speye(i,i)+ei;
+I(i,i)=0;
+gradient_1=kron(speye(j,j),I);
+ei = sparse(1 : i-1 , 2 : i , 1, i , i );
+gradient_2=kron(I,speye(j,j));
+Laplace=gradient_1*gradient_1+gradient_2*gradient_2;
+% for n=1:k
+%     b=reshape(C_man(:,:,n),i*j,1);
+%     b=Laplace*b;
+%     b=full(b);
+%     C_man(:,:,n)=reshape(b,i,j);
+% end
+% A=rand(i,j);
+% A=reshape(A,i*j,1);
+% gra_1=gradient_1*A;
+% gra_2=gradient_2*A;
+% gra_1=gradient_1*gra_1;
+% gra_2=gradient_2*gra_2;
+% gra_1=reshape(gra_1,i,j);
+% gra_2=reshape(gra_2,i,j);
